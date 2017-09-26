@@ -1,15 +1,15 @@
 function getSignAndErase(number)
-{
-    if (number[0] == '-')
-    {
-        return [false, number.substring(1,number.length)];
-    }
-    if (number[0] == '+')
-    {
-        return [true, number.substring(1,number.length)];
-    }
-    return [true, number];
-}
+	{
+		if (number[0] == '-')
+		{
+			return [false, number.substring(1,number.length)];
+		}
+		if (number[0] == '+')
+		{
+			return [true, number.substring(1,number.length)];
+		}
+		return [true, number];
+	}
 
 module.exports = function multiply(first, second) {
     var numberTemplate = /^[\+,\-]?\d+$/;
@@ -19,7 +19,6 @@ module.exports = function multiply(first, second) {
     first = getSignAndErase(first)[1];
     second = getSignAndErase(second)[1];
     var result = new Array(first.length + second.length + 1).join('0');
-    print(result);
     var firstCounter = 0;
     while (first != "") {
         var firstDigit = parseInt(first[first.length - 1]);
@@ -35,7 +34,6 @@ module.exports = function multiply(first, second) {
             digitFromPreviousMultiply = Math.floor(multiplyRes /10) + Math.floor(digitRes / 10);
             var digitResString = digitRes.toString();
             result = result.substr(0, secondCounter + firstCounter) + (digitRes % 10).toString() + result.substr(secondCounter + firstCounter + 1, result.length - secondCounter - firstCounter);
-            print(result);
             secondCounter++;
         }
         result = result.substr(0, secondCounter + firstCounter) + digitFromPreviousMultiply.toString() + result.substr(secondCounter + firstCounter + 1, result.length - secondCounter - firstCounter);
